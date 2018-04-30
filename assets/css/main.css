@@ -1,0 +1,78 @@
+.dontLook{display:none}
+.title{word-wrap: break-word}
+.description{word-break: break-all; font-family:  'Open Sans', sans-serif;font-size: 18px;}
+.wordBreak{word-break: break-all}
+
+.customMessageContainer{position: fixed;  height: 100vh; width: 100%; z-index: 12345;}
+.customMessageBox{background-color: white; right:15px; bottom: 15px; z-index: 999; position: absolute; color: white; width: 500px; min-height:100px;border-radius:2px;}
+.customMessageTitle{font-size:22px;height:44px;padding-top:16px;padding-left:25px;color:white!important;}
+.customMessageContent{display: block;color:black;min-height:50px;padding:10px 25px;}
+.customMessageBackground{width:100%; height: 100%; z-index: 888; background-color: #414141; opacity: 0.75}
+.customMessageClose{float: right; color:red; display: inline; font-size: medium;position:absolute;top:6px;right:6px;}
+
+.tag {display:inline-block;padding:5px;background-color:#009fb3;color:white;border-radius:5px;margin:5px;}
+.sectionTitle {font-weight:bold;font-size:17px;margin-bottom:10px;}
+
+.list2 li+li {margin-top: 10px;padding-top: 10px;border-top: 1px solid #d1d1d1;}
+.container_12 .split{border-bottom: 1px solid #d1d1d1;margin:10px;padding:10px;}
+.oldPrice {padding:5px 2px;text-decoration: line-through;font-weight:bold;}
+.newPrice {padding:5px 2px;font-weight:bold;color:indianred;}
+.price {padding:5px 2px;font-weight:bold;}
+.imeg{text-align: center; vertical-align: middle; padding-top: 5%; margin-top: 5%;}
+.videoBackground{background-color: #414141;width:100%; height:100%;}
+.videoStyle{}
+.logo{height: 100%; width: 100%; object-fit: contain}
+.inputHidden{height:0!important; width: 0!important; clear:both!important;}
+#darkOverlay{z-index: 1000; left:0; top:0; position: absolute; background: rgba(0,0,0,.95); width: 100%;}
+#video[poster]{height:100%;width: 100%; object-fit: fill;}
+.trashcan{position: fixed; z-index:123; bottom:0; left:0; height:10vh; width: 15vw;margin-bottom: 10vh;}
+.special{
+    -webkit-animation:spin3d .25s linear infinite;
+    -moz-animation:spin3d .25s linear infinite;
+    animation:spin3d .25s linear infinite;
+}
+.colorChanger{
+    animation: colorChange .1s linear infinite;
+}
+.spin{
+    -webkit-animation:spin .25s linear infinite;
+    -moz-animation:spin .25s linear infinite;
+    animation:spin .25s linear infinite;
+}
+.heightUp{
+    animation-name: heightIncrement;
+    animation-duration: 2.25s;
+    animation-delay: -2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.cNon.cVis{visibility: visible; opacity: 1; transition: opacity 1.5s linear; z-index: 1001;}
+.cNon{ opacity: 0; transition: visibility 0s 1.5s, opacity 1.5s linear}
+.zLow{z-index: -512}
+.zHigh{z-index: 1024}
+
+@keyframes heightIncrement {
+    0%{height: 100vh;}
+    25% {height:125vh;}
+    50%{height:150vh;}
+    75%{height:175vh;}
+    100%{height:200vh;}
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+@-moz-keyframes spin3d {100%{-moz-transform: rotateX(420deg); rotateY(360deg); rotateZ(270deg)}}
+@-webkit-keyframes spin3d {100%{-webkit-transform: rotateX(420deg); rotateY(360deg); rotateZ(270deg)}}
+@keyframes spin3d{
+    0% {background:red;}
+    33.33% {transform: rotate3D(2,3.5,5,720deg);}
+    50% {background:yellow;}
+    66.66% {transform: rotate3D(2,5,3.5,1280deg);}
+    100%{transform: rotate3D(5,3.5,2,1488deg);background:blue;}
+}
+@keyframes colorChange{
+    0% {background:red;}
+    50% {background:yellow;}
+    100%{background:blue;}
+}

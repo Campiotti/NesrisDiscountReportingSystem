@@ -1,0 +1,58 @@
+createSQLdb
+
+create Database Webvideo_GRP4;
+create TABLE Tag(
+	id int auto_increment PRIMARY KEY, 
+	TagName varchar(100)
+	);
+create TABLE Images(
+	id int auto_increment PRIMARY KEY,
+	image varchar(100)
+	);
+create TABLE Review(
+	id int auto_increment PRIMARY KEY,
+	UserFK int,
+	ProductFK int,
+	Title varchar(100),
+	Content varchar(500)
+	);
+create TABLE DBUser (
+	id int auto_increment PRIMARY KEY, 
+	cartFK int NULL,
+	email varchar(100),
+	DBUsername varchar(100),
+	Password varchar(100)
+	);
+create TABLE Cart(
+	id int auto_increment PRIMARY KEY, 
+	DBUserFK int NULL,
+	productFK int
+	);
+
+create TABLE Product(
+	id int auto_increment PRIMARY KEY,
+	imagesFK int,
+	tagFK int,
+	userFK int,
+	Product_TagFK, 
+	Productname varchar(100),
+	Stock int,
+	Rating int,
+	Description varchar(500),
+	Price float,
+	Discount float
+	);
+
+create TABLE Product_Tag(
+	id int auto_increment PRIMARY KEY, 
+	tagFK int,
+	productFK int
+	);
+
+ALTER TABLE Product_Tag ADD CONSTRAINT FOREIGN KEY (tagFK) references Tag(id) on delete restrict;
+ALTER TABLE Product_Tag ADD CONSTRAINT FOREIGN KEY (productFK) references Product(id) on delete cascade;
+ALTER TABLE Cart ADD CONSTRAINT FOREIGN KEY (DBUserFK) references DBUser(id) on delete SET NULL;
+ALTER TABLE Cart ADD CONSTRAINT FOREIGN KEY (productFK) references Product(id) on delete cascade;
+ALTER TABLE Product ADD CONSTRAINT FOREIGN KEY (Product_Tag) references Product_Tag(id) on delete restrict;
+ALTER TABLE DBUser ADD CONSTRAINT FOREIGN KEY (cartFK) references Cart(id) on delete cascade;
+ALTER TABLE DBUser ADD CONSTRAINT FOREIGN KEY (ReviewFK) references Review(id) on delete cascade;
