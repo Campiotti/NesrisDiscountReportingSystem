@@ -9,7 +9,7 @@
 namespace models;
 
 
-class Employee
+class Employee extends Entity
 {
 
 }

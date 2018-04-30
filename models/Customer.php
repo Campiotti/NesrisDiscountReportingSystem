@@ -9,7 +9,7 @@
 namespace models;
 
 
-class Customer
+class Customer extends Entity
 {
 
 }

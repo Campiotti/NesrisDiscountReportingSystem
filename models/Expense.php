@@ -9,7 +9,7 @@
 namespace models;
 
 
-class Expense
+class Expense extends Entity
 {
 
 }

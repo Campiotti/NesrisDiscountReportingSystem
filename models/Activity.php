@@ -9,7 +9,7 @@
 namespace models;
 
 
-class Activity
+class Activity extends Entity
 {
 
 }

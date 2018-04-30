@@ -9,7 +9,7 @@
 namespace models;
 
 
-class TextBlock
+class TextBlock extends Entity
 {
 
 }

@@ -9,7 +9,7 @@
 namespace models;
 
 
-class Report
+class Report extends Entity
 {
 
 }
