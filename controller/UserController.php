@@ -11,8 +11,6 @@ namespace controller;
 
 use models\Employee;
 use models\User;
-use services\DBConnection;
-use services\SessionManager;
 
 class UserController extends BaseController implements ControllerInterface
 {
@@ -153,12 +151,12 @@ class UserController extends BaseController implements ControllerInterface
             }
         }
     }
-    public function usernameCheck(){
+   /* public function usernameCheck(){
         $this::$dontRender=true;
         if($this->httpHandler->isGet()){
             $data=$this->httpHandler->getData();
             $username=$data["q"];
-            $statement= $this->queryBuilder->setMode("select")->setColumns("Username")->setFromTable("DBUser")
+            $statement= $this->renderer->queryBuilder->setMode("select")->setColumns("Username")->setFromTable("DBUser")
                 ->addCondition("Username","=",$username);
             $res=$statement->executeStatement();
             if($res==[]){
@@ -167,7 +165,7 @@ class UserController extends BaseController implements ControllerInterface
                 echo "Username was found in Database";
             }
         }
-    }
+    }*/
     public function logout(){
         session_destroy();
         $this->httpHandler->redirect("user","user");
