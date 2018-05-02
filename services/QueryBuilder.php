@@ -274,10 +274,11 @@ class QueryBuilder
         if (isset($this->statement['ColsWVals']) && count($this->statement['ColsWVals']['Values']) == count($this->statement['ColsWVals']['Columns'])){
             $statement .= $this->statement['ColsWVals']['Table'];
             $statement .= " set ";
-            //$tmpI=0;
+            $tmpI=0;
             foreach($this->statement['ColsWVals']['Columns'] as $colsWVal){
-                $this->parameters[] = $this->statement['ColsWVals']['Columns'][$colsWVal];
+                $this->parameters[] = $this->statement['ColsWVals']['Values'][$tmpI];
                 $statement .= $colsWVal.="=?,";
+                $tmpI++;
             }
 
             /*for($i = 0;$i < count($this->statement['ColsWVals']['Columns']); $i++) {
@@ -366,6 +367,7 @@ class QueryBuilder
         $statement = $this->dbConnection->prepare($stmt);
         foreach($this->parameters as $key => $param){
             $statement->bindValue(($key+1), htmlspecialchars($param, ENT_QUOTES));
+            //echo$param.'<br>';
         }
         //var_dump($stmt);
         //var_dump($statement);

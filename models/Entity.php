@@ -79,10 +79,6 @@ class Entity
         }
     }
 
-    /*protected function setId($id){
-        $this->id=$id;
-    }*/
-
     public function save(){
         $this->queryBuilder->setMode(2)
             ->setColsWithValues($this->tableName,$this->valuesSet,$this->getValues())
@@ -90,7 +86,8 @@ class Entity
     }
 
     public function update(){
-
+        if($this->id==null)
+            return;
         $this->queryBuilder->setMode(1)->setTable($this->tableName)
             ->setColsWithValues($this->tableName,$this->valuesSet,$this->getValues())
             ->addCond($this->tableName,"id",0,$this->id,0)
@@ -99,13 +96,15 @@ class Entity
     }
 
     public function delete(){
-
+        if($this->id==null)
+            return;
         $this->queryBuilder->setMode(3)->setTable($this->tableName)
             ->addCond($this->tableName,"id",0,$this->id,0)
             ->executeStatement();
     }
     public function view(){
-
+        if ($this->id==null)
+            return;
         $query=$this->queryBuilder->setMode(0)->setTable($this->tableName);
         if(count($this->valuesSet)>0)
             $query->setCols($this->tableName,$this->valuesSet);
