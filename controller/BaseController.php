@@ -91,7 +91,7 @@ class BaseController
             $dbseed = new DatabaseSeed();
             $dbseed->resetDatabase();
         }
-        $this->httpHandler->redirect('video', 'index');
+        //$this->httpHandler->redirect('video', 'index');
     }
     /**
      * Throwaway function used to update the header index so the page looks right

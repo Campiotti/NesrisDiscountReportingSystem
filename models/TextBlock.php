@@ -11,5 +11,7 @@ namespace models;
 
 class TextBlock extends Entity
 {
+    public $actvitiyFk;
+    public $content;
 
 }

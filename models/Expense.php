@@ -11,5 +11,7 @@ namespace models;
 
 class Expense extends Entity
 {
-
+    public $unitType;
+    public $unit;
+    public $unitPrice;
 }

@@ -11,5 +11,14 @@ namespace models;
 
 class Report extends Entity
 {
+    public $customerFk;
+    public $employeeFk;
+    public $title;
+    public $status=1;
+    public $signature=null;
+    public $signaturedate=null;
+
+
+
 
 }

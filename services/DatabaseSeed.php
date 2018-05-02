@@ -19,25 +19,23 @@ use models\User;
  * $dbseed = new \services\DatabaseSeed();
  * $dbseed->resetDatabase();
  */
-
 class DatabaseSeed
 {
     private $dbConnection;
-    private $queryBuilder;
-
-
-    /**
-     * this will create a new connection to the db and delete the whole database
-     * next it will create all tables with their primary keys
-     * after that all constraints will be created
-     * last test data is inserted in the newly created tables
-     */
+    //private $queryBuilder;
+/**
+ * this will create a new connection to the db and delete the whole database
+ * next it will create all tables with their primary keys
+ * after that all constraints will be created
+ * last test data is inserted in the newly created tables
+ */
     public function resetDatabase(){
         session_destroy();
 		$ini = parse_ini_file('config/database.ini');
+		//var_dump($ini);
         $this->dbConnection = new \PDO($ini['engine'].':host='.$ini['host'].';',$ini['username'],$ini['password']);
-        $this->queryBuilder = new QueryBuilder();
-
+       // var_dump($this->dbConnection);
+        //$this->queryBuilder = new QueryBuilder();
         $this->dbConnection->prepare($this->dropDatabase($ini['database']))->execute();
         $this->dbConnection->prepare($this->createDatabase($ini['database']))->execute();
         $this->dbConnection->prepare($this->useDatabase($ini['database']))->execute();

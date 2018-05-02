@@ -12,4 +12,10 @@ namespace models;
 class Employee extends Entity
 {
 
+    public $firstname;
+    public $lastname;
+    public $email;
+    public $tel;
+    public $username;
+    public $password;
 }

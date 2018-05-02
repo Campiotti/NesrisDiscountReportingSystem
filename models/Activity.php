@@ -11,5 +11,6 @@ namespace models;
 
 class Activity extends Entity
 {
-
+    public $name;
+    public $hourlyPrice;
 }

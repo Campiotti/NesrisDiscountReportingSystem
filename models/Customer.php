@@ -11,5 +11,8 @@ namespace models;
 
 class Customer extends Entity
 {
-
+    public $firstname;
+    public $lastname;
+    public $email;
+    public $tel;
 }
