@@ -2,6 +2,7 @@
 
 namespace models;
 //use services\DBConnection;
+use ReflectionClass;
 use services\DBConnection;
 use services\QueryBuilder;
 use services\SessionManager;
@@ -18,8 +19,8 @@ class Entity
     protected $id;
     protected $validator;
     protected $valuesSet = [];
-    protected $properties= [];
-    protected $tablename;
+    //protected $properties= [];
+    protected $tableName;
     protected $dbConnection;
     protected $queryBuilder;
     protected $sessionManager;
@@ -35,6 +36,8 @@ class Entity
         $this->dbConnection = DBConnection::getDbConnection();
         $this->queryBuilder = new QueryBuilder();
         $this->sessionManager= new SessionManager();
+        $r = new ReflectionClass($this);
+        $this->tableName=$r->getShortName();
     }
 
     public function isValid():bool
@@ -47,11 +50,11 @@ class Entity
 
     }
 
-    protected function addProperty($propertyName){
+    /*protected function addProperty($propertyName){
         if(!array_search($propertyName,$this->properties))
             if(property_exists($this,$propertyName))
                 array_push($this->properties,$propertyName);
-    }
+    }*/
 
     protected function getValues(){
         $tmp = [];
@@ -64,7 +67,7 @@ class Entity
     public function patchEntity($values){
         foreach ($values as $key => $value){
             if(property_exists($this, $key)){
-                $this->valuesSet[] = $key;
+                $this->valuesSet[$key] = $key;
                 $this->$key = $value;
             }
         }
@@ -76,26 +79,38 @@ class Entity
         }
     }
 
+    /*protected function setId($id){
+        $this->id=$id;
+    }*/
+
     public function save(){
-        $this->queryBuilder->setMode(2)->setTable($this->tablename)
-            ->setColsWithValues($this->tablename,$this->valuesSet,$this->getValues())
+        $this->queryBuilder->setMode(2)
+            ->setColsWithValues($this->tableName,$this->valuesSet,$this->getValues())
             ->executeStatement();
     }
 
     public function update(){
-        $id="id";
-        $this->queryBuilder->setMode(1)->setTable($this->tablename)
-            ->setColsWithValues($this->tablename,$this->valuesSet,$this->getValues())
-            ->addCond($this->tablename,"id",0,$this->$id,0)
+
+        $this->queryBuilder->setMode(1)->setTable($this->tableName)
+            ->setColsWithValues($this->tableName,$this->valuesSet,$this->getValues())
+            ->addCond($this->tableName,"id",0,$this->id,0)
             ->executeStatement();
 
     }
 
     public function delete(){
-        $id="id";
-        $this->queryBuilder->setMode(3)->setTable($this->tablename)
-            ->addCond($this->tablename,"id",0,$this->$id,0)
+
+        $this->queryBuilder->setMode(3)->setTable($this->tableName)
+            ->addCond($this->tableName,"id",0,$this->id,0)
             ->executeStatement();
+    }
+    public function view(){
+
+        $query=$this->queryBuilder->setMode(0)->setTable($this->tableName);
+        if(count($this->valuesSet)>0)
+            $query->setCols($this->tableName,$this->valuesSet);
+        $query->addCond($this->tableName,"id",0,$this->id,0);
+        $query->executeStatement();
     }
 
 }

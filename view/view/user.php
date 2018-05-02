@@ -98,8 +98,8 @@
                 </div>
             </div>
         <div class="grid_12">
-                    <h3><span>Your Videos</span></h3>
-        <div class="text1 center" id="show1" style="display: none">You have no videos yet.</div>
+                    <h3><span>Your assigned Reports </span></h3>
+        <div class="text1 center" id="show1" style="display: none">You have assigned reports yet.</div>
                     <?php if (count($videos)>0){ foreach($videos as $video){$amount++?>
                         <div class="grid_12 split" id="<?php echo"vid".$video['ID']?>">
                             <div class="grid_2"></div>
@@ -117,7 +117,7 @@
                         </div>
                     <?php }?>
             <?php }else{?>
-                        <div class="text1 center" id="show1">You have no videos yet.</div>
+                        <div class="text1 center" id="show1">You have no assigned reports yet.</div>
                     <?php }}?>
         </div>
     </div>

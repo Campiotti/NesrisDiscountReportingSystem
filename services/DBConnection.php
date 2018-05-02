@@ -28,8 +28,8 @@ class DBConnection
     }
 
     private static function createConnection(){
-		$ini = parse_ini_file('config/database.ini')
-        DBConnection::$dbConnection = new \PDO($ini['engine']':host='.$ini['host']';dbname='.$ini['database'],$ini['username'],$ini['password']);
+		$ini = parse_ini_file('config/database.ini');
+        DBConnection::$dbConnection = new \PDO($ini['engine'].':host='.$ini['host'].';dbname='.$ini['database'],$ini['username'],$ini['password']);
     }
 
 }

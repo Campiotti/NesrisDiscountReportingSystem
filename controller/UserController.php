@@ -9,6 +9,7 @@
 namespace controller;
 
 
+use models\Employee;
 use models\User;
 use services\DBConnection;
 use services\SessionManager;
@@ -123,7 +124,7 @@ class UserController extends BaseController implements ControllerInterface
     public function login(){
         $this::$dontRender=true;
         if($this->httpHandler->isPost() && isset($_POST['username']) && isset($_POST['password']) && $_POST['username'] && $_POST['password']) {
-            $user = $this->renderer->queryBuilder->setMode(0)->setTable('DBUser')->addCond('DBUser', 'Username', '0', $_POST['username'],false)->setCols('DBUser', array('id', 'Username', 'Password', 'Email', 'EndDate'))->executeStatement();
+            $user = $this->renderer->queryBuilder->setMode(0)->setTable('Employee')->addCond('Employee', 'Username', '0', $_POST['username'],false)->setCols('Employee', array('id', 'Username', 'Password', 'Email', 'tel','firstname','lastname'))->executeStatement();
 
             if ($user && password_verify($_POST['password'], $user[0]['Password'])) {
                 $this->renderer->sessionManager->setSessionArray('User', $user[0]);
@@ -187,5 +188,20 @@ class UserController extends BaseController implements ControllerInterface
                 ->executeStatement();
             $this->renderer->setAttribute('videos',$videos);
 
+    }
+    public function testDelete($id){
+        $emp = new Employee();
+        $emp->patchEntity(array('id'=>$id));
+        $emp->delete();
+    }
+    public function testAdd(){
+        $emp = new Employee();
+        $emp->patchEntity(array('firstname'=>'test','lastname'=>'test2','email'=>'1&1@2.de','tel'=>'+420 88888888','username'=>'guydude','password'=>'admin12'));
+        $emp->save();
+    }
+    public function testUpdate($id){
+        $emp = new Employee();
+        $emp->patchEntity(array('id'=>$id,'firstname'=>'doug','lastname'=>'dimmadome'));
+        $emp->update();
     }
 }

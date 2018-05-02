@@ -9,6 +9,8 @@
 namespace controller;
 
 
+use models\Report;
+
 class ReportController extends BaseController implements ControllerInterface
 {
 
@@ -24,7 +26,8 @@ class ReportController extends BaseController implements ControllerInterface
 
     public function view(int $id)
     {
-        // TODO: Implement view() method.
+        $report = new Report();
+
     }
 
     public function delete(int $id)
