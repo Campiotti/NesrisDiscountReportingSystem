@@ -204,4 +204,10 @@ class UserController extends BaseController implements ControllerInterface
         $emp->patchEntity(array('id'=>$id,'firstname'=>'doug','lastname'=>'dimmadome'));
         $emp->update();
     }
+    public function testView($id){
+        $emp = new Employee();
+        $emp->patchEntity(array('id'=>$id));
+        $emp->view();
+        echo$emp->firstname;
+    }
 }

@@ -106,10 +106,12 @@ class Entity
         if ($this->id==null)
             return;
         $query=$this->queryBuilder->setMode(0)->setTable($this->tableName);
-        if(count($this->valuesSet)>0)
+        if(count($this->valuesSet)>1)
             $query->setCols($this->tableName,$this->valuesSet);
         $query->addCond($this->tableName,"id",0,$this->id,0);
-        $query->executeStatement();
+        //var_dump($query->executeStatement());
+        $res = $query->executeStatement();
+        $this->patchEntity($res[0]);
     }
 
 }

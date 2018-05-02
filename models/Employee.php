@@ -19,13 +19,14 @@ class Employee extends Entity
     public $username;
     public $password;
 
-    public static function getSalt(){
+    public static function getSalt()
+    {
         return '$5$rounds=5000$NesriniDMagician';
     }
 
     public function save()
     {
-        $this->password=crypt($this->password,self::getSalt());
+        $this->password = crypt($this->password, self::getSalt());
         parent::save();
     }
 }
