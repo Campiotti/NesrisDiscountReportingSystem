@@ -61,10 +61,10 @@
                         <!--<li class="<?php if ($this->headerIndex == 2) echo'current'?>"><a href="/video/videos">Videos</a></li>-->
                         <li class="<?php if ($this->headerIndex == 3) echo'current'?>"><a href="/base/partners">Our Partners</a></li>
                         <li class="<?php if ($this->headerIndex == 4) echo'current'?>"><a href="/base/contact">Contact Us</a></li>
-                        <li class="<?php if ($this->headerIndex == 5) echo'current'?>"><a href="/employee/user">You</a></li>
-                        <?php if($this->sessionManager->isSet('User') && false){ ?>
-                        <li class="<?php if ($this->headerIndex == 6) echo'current'?>"><a href="/video/upload">Upload</a></li>
-                        <li class="<?php if ($this->headerIndex == 7) echo'current'?>"><a href="/video/favourites">Favorites</a></li>
+                        <li class="<?php if ($this->headerIndex == 5) echo'current'?>"><a href="/user/user">You</a></li>
+                        <?php if($this->sessionManager->isSet('User')){ ?>
+                        <li class="<?php if ($this->headerIndex == 6) echo'current'?>"><a href="/report/submit">Submit Report</a></li>
+                        <!--<li class="<?php if ($this->headerIndex == 7) echo'current'?>"><a href="/video/favourites">Favorites</a></li>-->
                         <?php }?>
                     </ul>
                 </nav>

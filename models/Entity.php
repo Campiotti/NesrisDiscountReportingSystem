@@ -95,14 +95,21 @@ class Entity
 
     }
 
-    public function delete(){
+    public function deleteOC(){
         if($this->id==null)
             return;
         $this->queryBuilder->setMode(3)->setTable($this->tableName)
             ->addCond($this->tableName,"id",0,$this->id,0)
             ->executeStatement();
     }
-    public function view(){
+    public function delete($id){
+        if($id==null)
+            return;
+        $this->queryBuilder->setMode(3)->setTable($this->tableName)
+            ->addCond($this->tableName,"id",0,$id,0)
+            ->executeStatement();
+    }
+    public function viewOC(){
         if ($this->id==null)
             return;
         $query=$this->queryBuilder->setMode(0)->setTable($this->tableName);
@@ -113,6 +120,17 @@ class Entity
         $res = $query->executeStatement();
         $this->patchEntity($res[0]);
     }
+    public function view($id){
+        if ($id==null)
+            return;
+        $query=$this->queryBuilder->setMode(0)->setTable($this->tableName);
+        if(count($this->valuesSet)>0)
+            $query->setCols($this->tableName,$this->valuesSet);
+        $query->addCond($this->tableName,"id",0,$id,0);
+        $res = $query->executeStatement();
+        $this->patchEntity($res[0]);
+    }
+
     public function getId(){
         return$this->id;
     }

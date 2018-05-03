@@ -21,14 +21,24 @@ class ReportController extends BaseController implements ControllerInterface
 
     public function add()
     {
-        // TODO: Implement add() method.
+        if($this->httpHandler->isPost() && $this->renderer->sessionManager->isSet('User')){
+            $report = new Report();
+            $data = $this->httpHandler->getData();
+            $data['employeeFk']=$this->renderer->sessionManager->getSessionItem('User','id');
+            $data['status']=1;
+            $report->patchEntity($data);
+            $report->save();
+            $this->createAlert('Report submitted','Your report was added to the Database.',true);
+        }
+        else
+            $this->createAlert('Invalid Report','contents invalid',0);
+        $this->httpHandler->redirect('user','user');
     }
 
     public function view(int $id)
     {
         $report = new Report();
-        $report->patchEntity(array('id'=>$id));
-        $report->view();
+        $report->view($id);
         $this->renderer->setAttribute('report',$report);
 
     }
@@ -42,4 +52,16 @@ class ReportController extends BaseController implements ControllerInterface
     {
         // TODO: Implement edit() method.
     }
+    public function submit(){
+        $this->renderer->headerIndex=6;
+        $customer=$this->renderer->queryBuilder->setMode(0)->setTable('Customer')
+            ->setCols('Customer',array('id','firstname','lastname'))
+            ->executeStatement();
+        $this->renderer->setAttribute('customer',$customer);
+
+    }
+    public function update(int $id){
+
+    }
+    
 }

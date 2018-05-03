@@ -177,36 +177,34 @@ class UserController extends BaseController implements ControllerInterface
     public function user(){
         $this->renderer->headerIndex = 5;
         $id = $this->renderer->sessionManager->getSessionItem('User', 'id');
-        $stmnt = $this->renderer->queryBuilder->setMode(0)->setTable("dbuser")
-            ->setCols('dbuser',array('id','username','email'))
-            ->addCond('dbuser','id','0',$id,'')
+        $stmnt = $this->renderer->queryBuilder->setMode(0)->setTable("Employee")
+            ->setCols('employee',array('id','username','email'))
+            ->addCond('employee','id','0',$id,'')
             ->executeStatement();
         $this->renderer->setAttribute('user',$stmnt);
-            $videos=$this->renderer->queryBuilder->setMode(0)->setTable('product')
-                ->addCond('product','dbuserfk',0,$id,false)
+            $reports=$this->renderer->queryBuilder->setMode(0)->setTable('Report')
+                ->addCond('Report','employeeFk',0,$id,false)
                 ->executeStatement();
-            $this->renderer->setAttribute('videos',$videos);
+            $this->renderer->setAttribute('reports',$reports);
 
     }
     public function testDelete($id){
         $emp = new Employee();
-        $emp->patchEntity(array('id'=>$id));
-        $emp->delete();
+        $emp->delete($id);
     }
     public function testAdd(){
         $emp = new Employee();
         $emp->patchEntity(array('firstname'=>'test','lastname'=>'test2','email'=>'1&1@2.de','tel'=>'+420 88888888','username'=>'guydude','password'=>'admin12'));
         $emp->save();
     }
-    public function testUpdate($id){
+    public function testUpdate(int $id){
         $emp = new Employee();
         $emp->patchEntity(array('id'=>$id,'firstname'=>'doug','lastname'=>'dimmadome'));
         $emp->update();
     }
-    public function testView($id){
+    public function testView(int $id){
         $emp = new Employee();
-        $emp->patchEntity(array('id'=>$id));
-        $emp->view();
-        echo$emp->firstname;
+        $emp->view($id);
+        echo$emp->firstname." ".$emp->lastname;
     }
 }
