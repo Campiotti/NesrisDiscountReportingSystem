@@ -55,6 +55,8 @@ class ReportController extends BaseController implements ControllerInterface
             ->setCols('ReportExpense',array('amount', 'amount*unitPrice as cost'))
             ->executeStatement();
         $this->renderer->setAttribute('expenses',$expenses);
+        echo count($expenses);
+        echo count($activities);
 
     }
 

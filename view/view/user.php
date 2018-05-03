@@ -109,12 +109,12 @@
                                     <li>Expenses: <?php echo (array_key_exists($report['id'],$this->expenses)) ? $this->htmlHelper->formatPrice($this->expenses[$report['id']],0) : 'none yet'?></li>
                                     <li>ActivityCosts: <?php echo (array_key_exists($report['id'],$this->activities)) ? $this->htmlHelper->formatPrice($this->activities[$report['id']],0) : 'none yet'?></li>
                                     <li><button class="btn" onClick="location.href='/report/delete/<?php echo$report['id']?>'">Delete Report</button>
-                                    <button class="btn" onclick="location.href='/report/update/<?php echo$report['id']?>'">Edit Report</button>
+                                    <button class="btn" onclick="location.href='/report/view/<?php echo$report['id']?>'" disabled>Details</button>
                                         <!--<button class="btn" onclick="location.href='/report/view/<?php //echo $report['id']?>'">View</button>-->
                                     </li>
                                     <li>
-                                        <button class="btn" onclick="location.href='/activity/add/<?php echo $report['id']?>'">Add Activity</button>
-                                        <button class="btn" onclick="location.href='/expense/add/<?php echo $report['id']?>'">Add Expense</button>
+                                        <button class="btn" onclick="location.href='/activity/add/<?php echo $report['id']?>'" disabled>Add Activity</button>
+                                        <button class="btn" onclick="location.href='/expense/add/<?php echo $report['id']?>'" disabled>Add Expense</button>
                                     </li>
                                 </ul>
                             </div>
