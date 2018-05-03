@@ -59,7 +59,7 @@
             <?php echo $this->formHelper->endForm(); ?>
             <?php }else{ $user = $this->sessionManager->getSessionArray('User');?>
                 <h3><span><?php echo$user['firstname']." ".$user['lastname']?>'s Profile</span></h3>
-                <?php $videos=$this->videos; $amount=0;?>
+                <?php $reports=$this->reports; $amount=0;?>
                 <?php echo $this->formHelper->createForm("user","/user/edit/".$user['id'],"POST","Edit"); ?>
                 <fieldset>
                     <div class="success_wrapper">
@@ -100,17 +100,21 @@
         <div class="grid_12">
                     <h3><span>Your assigned Reports </span></h3>
         <div class="text1 center" id="show1" style="display: none">You have assigned reports yet.</div>
-                    <?php if (count($videos)>0){ foreach($videos as $video){$amount++?>
-                        <div class="grid_12 split" id="<?php echo"vid".$video['ID']?>">
-                            <div class="grid_2"></div>
-                            <div class="grid_4"><img src="<?php echo($video['Image']) ? $this->image."products/".$video['Image'] :"https://i.imgur.com/72xjDmY.jpg";?>" alt="video_thumbnail" class="img_inner fleft" id="img_<?php echo$video['ID']?>" draggable="false" ondragstart="startHover(event,this,<?php echo$video['ID']?>)"></div>
+                    <?php if (count($reports)>0){ foreach($reports as $report){$amount++?>
+                        <div class="grid_12 split" id="<?php echo"vid".$report['id']?>">
                             <div class="grid_4 extra_wrapper">
-                                <div class="title"><?php echo$video['Productname']?></div>
+                                <div class="title"><?php echo$report['title']?></div>
                                 <ul class="list2" id="favourites">
-                                    <li>Views: <?php echo$video['Views']?></li>
-                                    <li><a href="/video/view/<?php echo$video['ID']?>">Go to Video</a></li>
-                                    <li><button class="btn" onClick="videoList(<?php echo$video['ID']?>)">Delete Video</button>
-                                    <button class="btn" onclick="location.href='/video/update/<?php echo$video['ID']?>'">Edit Video</button>
+                                    <li>Customer: <a href="/report/customerView/<?php echo$report['cid']?>"><?php echo$report['firstname']." ".$report['lastname']?></a></li>
+                                    <li>Expenses: <?php echo (array_key_exists($report['id'],$this->expenses)) ? $this->htmlHelper->formatPrice($this->expenses[$report['id']],0) : 'none yet'?></li>
+                                    <li>ActivityCosts: <?php echo (array_key_exists($report['id'],$this->activities)) ? $this->htmlHelper->formatPrice($this->activities[$report['id']],0) : 'none yet'?></li>
+                                    <li><button class="btn" onClick="location.href='/report/delete/<?php echo$report['id']?>'">Delete Report</button>
+                                    <button class="btn" onclick="location.href='/report/update/<?php echo$report['id']?>'">Edit Report</button>
+                                        <!--<button class="btn" onclick="location.href='/report/view/<?php //echo $report['id']?>'">View</button>-->
+                                    </li>
+                                    <li>
+                                        <button class="btn" onclick="location.href='/activity/add/<?php echo $report['id']?>'">Add Activity</button>
+                                        <button class="btn" onclick="location.href='/expense/add/<?php echo $report['id']?>'">Add Expense</button>
                                     </li>
                                 </ul>
                             </div>

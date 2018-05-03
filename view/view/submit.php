@@ -21,7 +21,7 @@
                     <input name="title" placeholder="Title of Report" required maxlength="128">
                     <br class="clear">
                     <span class="error error-empty">*This is not a valid phone number.</span><span class="empty error-empty">*This field is required.</span> </label>
-                <label class="">
+                <label class=""> Customer
                     <select name="customerFk" required>
                         <?php foreach($this->customer as $c){?>
                         <?php echo"<option value='$c[id]'>$c[firstname] $c[lastname]</option> " ?>

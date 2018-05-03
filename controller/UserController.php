@@ -183,8 +183,33 @@ class UserController extends BaseController implements ControllerInterface
             ->executeStatement();
         $this->renderer->setAttribute('user',$stmnt);
             $reports=$this->renderer->queryBuilder->setMode(0)->setTable('Report')
+                ->setCols('Report',array('id','title'))
+                ->setCols('Customer',array('id as cid','firstname','lastname'))
                 ->addCond('Report','employeeFk',0,$id,false)
+                ->joinTable('Customer','Report',0,"customerFk")
                 ->executeStatement();
+            $expenses=$this->renderer->queryBuilder->setMode(0)->setTable('ReportExpense')
+                ->setCols('ReportExpense',array('amount*unitPrice as cost'))
+                ->joinTable('Expense','ReportExpense',0,'expenseFk')
+                ->joinTable('Report','ReportExpense',0,'reportFk')
+                ->setCols('Report',array('id'))
+                ->executeStatement();
+            $activities=$this->renderer->queryBuilder->setMode(0)->setTable('ReportActivity')
+                ->setCols('ReportActivity',array('hours*hourlyPrice as cost'))
+                ->joinTable('Activity','ReportActivity',0,'activityFk')
+                ->joinTable('Report','ReportActivity',0,'reportFk')
+                ->setCols('Report',array('id'))
+                ->executeStatement();
+            $act=array();
+            foreach ($activities as $activity)
+                $act[$activity['id']]+=$activity['cost'];
+
+            $exp=array();
+            foreach($expenses as $expens)
+                $exp[$expens['id']]+=$expens['cost'];
+
+            $this->renderer->setAttribute('expenses',$exp);
+            $this->renderer->setAttribute('activities',$act);
             $this->renderer->setAttribute('reports',$reports);
 
     }

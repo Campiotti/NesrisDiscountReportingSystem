@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>BlocherTV</title>
+    <title>IC System Consumer Help</title>
     <meta charset="utf-8">
     <link rel="icon" href="<?php echo$this->image?><?php echo $icoArray[array_rand($icoArray)]?>">
     <link rel="shortcut icon" href="<?php echo$this->image?><?php echo $icoArray[array_rand($icoArray)]?>" />
