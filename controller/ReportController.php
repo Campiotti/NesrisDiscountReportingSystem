@@ -27,6 +27,9 @@ class ReportController extends BaseController implements ControllerInterface
     public function view(int $id)
     {
         $report = new Report();
+        $report->patchEntity(array('id'=>$id));
+        $report->view();
+        $this->renderer->setAttribute('report',$report);
 
     }
 

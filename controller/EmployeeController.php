@@ -9,6 +9,8 @@
 namespace controller;
 
 
+use models\Employee;
+
 class EmployeeController extends BaseController implements ControllerInterface
 {
 
@@ -36,4 +38,13 @@ class EmployeeController extends BaseController implements ControllerInterface
     {
         // TODO: Implement edit() method.
     }
+    public function user(){
+        if($this->renderer->sessionManager->isSet('User')){
+            $emp = new Employee();
+            $emp->patchEntity(array('id'=>$this->renderer->sessionManager->getSessionItem('User','id')));
+            $emp->view();
+            $this->renderer->setAttribute('user',$emp);
+        }
+    }
+
 }

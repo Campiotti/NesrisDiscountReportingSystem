@@ -85,11 +85,11 @@ insert into Customer (firstname, lastname, email, tel) values ('Clive', 'Osgordb
 insert into Customer (firstname, lastname, email, tel) values ('Berkley', 'Ettels', 'bettels3@lycos.com', '4134729653');
 insert into Customer (firstname, lastname, email, tel) values ('Carly', 'Schindler', 'cschindlero@squidoo.com', '3113206464');
 -- Employees --
-insert into Employee (firstname, lastname, email, tel, username, password) values ('Dayle', 'Hugill', 'dhugill0@amazonaws.com', '3726956069', 'dhugill0', '$5$rounds=5000$NesriniDMagician$Q2guGhlc5hmbf7q7soZNgnadWipw2KtLcOg6uyIeAT6');
-insert into Employee (firstname, lastname, email, tel, username, password) values ('Ado', 'Olivey', 'aolivey1@privacy.gov.au', '2534449079', 'aolivey1', '$5$rounds=5000$NesriniDMagician$Q2guGhlc5hmbf7q7soZNgnadWipw2KtLcOg6uyIeAT6');
-insert into Employee (firstname, lastname, email, tel, username, password) values ('Laurena', 'Pounsett', 'lpounsett2@yolasite.com', '6081250253', 'lpounsett2', '$5$rounds=5000$NesriniDMagician$Q2guGhlc5hmbf7q7soZNgnadWipw2KtLcOg6uyIeAT6');
-insert into Employee (firstname, lastname, email, tel, username, password) values ('Dolly', 'Bingell', 'dbingell3@indiatimes.com', '8259904853', 'dbingell3', '$5$rounds=5000$NesriniDMagician$Q2guGhlc5hmbf7q7soZNgnadWipw2KtLcOg6uyIeAT6');
-insert into Employee (firstname, lastname, email, tel, username, password) values ('Chilton', 'Oxx', 'coxx4@columbia.edu', '3381945769', 'coxx4', '$5$rounds=5000$NesriniDMagician$Q2guGhlc5hmbf7q7soZNgnadWipw2KtLcOg6uyIeAT6');
+insert into Employee (firstname, lastname, email, tel, username, password) values ('Dayle', 'Hugill', 'dhugill0@amazonaws.com', '3726956069', 'doug', '$5$rounds=5000$NesriniDMagician$Q2guGhlc5hmbf7q7soZNgnadWipw2KtLcOg6uyIeAT6');
+insert into Employee (firstname, lastname, email, tel, username, password) values ('Ado', 'Olivey', 'aolivey1@privacy.gov.au', '2534449079', 'alivey1', '$5$rounds=5000$NesriniDMagician$Q2guGhlc5hmbf7q7soZNgnadWipw2KtLcOg6uyIeAT6');
+insert into Employee (firstname, lastname, email, tel, username, password) values ('Laurena', 'Pounsett', 'lpounsett2@yolasite.com', '6081250253', 'Jeff', '$5$rounds=5000$NesriniDMagician$Q2guGhlc5hmbf7q7soZNgnadWipw2KtLcOg6uyIeAT6');
+insert into Employee (firstname, lastname, email, tel, username, password) values ('Dolly', 'Bingell', 'dbingell3@indiatimes.com', '8259904853', 'Bell', '$5$rounds=5000$NesriniDMagician$Q2guGhlc5hmbf7q7soZNgnadWipw2KtLcOg6uyIeAT6');
+insert into Employee (firstname, lastname, email, tel, username, password) values ('Chilton', 'Oxx', 'coxx4@columbia.edu', '3381945769', 'john', '$5$rounds=5000$NesriniDMagician$Q2guGhlc5hmbf7q7soZNgnadWipw2KtLcOg6uyIeAT6');
 -- TextBlock --
 insert into TextBlock(activityFk, content) values (1,'Fixed IP settings on Windows PC');
 insert into TextBlock(activityFk, content) values (1,'Linux and Window compatibility fixed between folders');

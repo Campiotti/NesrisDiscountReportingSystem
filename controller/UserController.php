@@ -126,6 +126,7 @@ class UserController extends BaseController implements ControllerInterface
 
             if ($user && password_verify($_POST['password'], $user[0]['Password'])) {
                 $this->renderer->sessionManager->setSessionArray('User', $user[0]);
+                $this->renderer->setAttribute('user',$user[0]);
                 $this->createAlert('Logged in','Correct Credentials.',true);
                 $this->httpHandler->redirect('user', 'user');
             } else {

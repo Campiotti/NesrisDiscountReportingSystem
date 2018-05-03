@@ -6,13 +6,14 @@
  * Time: 17:47
  */
 ?>
+<?php $icoArray = ['w.ico','lego.ico','media.ico','fb.ico','envelope.ico']; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>BlocherTV</title>
     <meta charset="utf-8">
-    <link rel="icon" href="<?php echo$this->image?>favicon.ico">
-    <link rel="shortcut icon" href="<?php echo$this->image?>favicon.ico" />
+    <link rel="icon" href="<?php echo$this->image?><?php echo $icoArray[array_rand($icoArray)]?>">
+    <link rel="shortcut icon" href="<?php echo$this->image?><?php echo $icoArray[array_rand($icoArray)]?>" />
     <link rel="stylesheet" href="<?php echo$this->assets?>css/main.css">
     <link rel="stylesheet" href="<?php echo$this->assets?>css/style.css">
     <link rel="stylesheet" href="<?php echo$this->assets?>css/camera.css">
@@ -51,17 +52,17 @@
 <header>
     <div class="container_12">
         <div class="grid_12">
-            <h1><a href="/base/index"><img src="<?php echo$this->image?>BlocherTV_White.png" alt="Logo" class="logo"></a> </h1>
+            <h1><a href="/base/index"><img src="<?php echo$this->image?>ICSystem_Logo.png" alt="Logo" class="logo"></a> </h1>
             <div class="menu_block">
                 <nav  class="" >
                     <ul class="sf-menu">
-                        <li class="<?php if ($this->headerIndex == 0) echo'current'?>"><a href="/video/index">Home</a></li>
+                        <li class="<?php if ($this->headerIndex == 0) echo'current'?>"><a href="/base/index">Home</a></li>
                         <li class="<?php if ($this->headerIndex == 1) echo'current'?>"><a href="/base/about">About</a></li>
-                        <li class="<?php if ($this->headerIndex == 2) echo'current'?>"><a href="/video/videos">Videos</a></li>
+                        <!--<li class="<?php if ($this->headerIndex == 2) echo'current'?>"><a href="/video/videos">Videos</a></li>-->
                         <li class="<?php if ($this->headerIndex == 3) echo'current'?>"><a href="/base/partners">Our Partners</a></li>
                         <li class="<?php if ($this->headerIndex == 4) echo'current'?>"><a href="/base/contact">Contact Us</a></li>
-                        <li class="<?php if ($this->headerIndex == 5) echo'current'?>"><a href="/user/user">You</a></li>
-                        <?php if($this->sessionManager->isSet('User')){ ?>
+                        <li class="<?php if ($this->headerIndex == 5) echo'current'?>"><a href="/employee/user">You</a></li>
+                        <?php if($this->sessionManager->isSet('User') && false){ ?>
                         <li class="<?php if ($this->headerIndex == 6) echo'current'?>"><a href="/video/upload">Upload</a></li>
                         <li class="<?php if ($this->headerIndex == 7) echo'current'?>"><a href="/video/favourites">Favorites</a></li>
                         <?php }?>

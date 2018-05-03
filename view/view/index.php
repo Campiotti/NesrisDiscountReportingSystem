@@ -37,33 +37,33 @@ array_push($arr,$base."Finesse.jpg")
 <div class="content">
   <div class="container_12">
     <div class="grid_12">
-      <h2>WELCOME TO blocher tv WHERE YOU CAN FIND<span>A RANGE OF HIGH-QUALITY <span class="col1">VIDEOS</span> THAT CAN HELP YOUR LIFE
+      <h2>WELCOME TO blocher tv WHERE YOU CAN FIND<span>A RANGE OF HIGH-QUALITY <span class="col1">REPORTS</span> THAT CAN HELP YOUR LIFE
 FLOURISH.</span></h2>
 <h3><span>SERVICES</span></h3>
     </div>
     <div class="grid_4">
       <div class="icon">
         <img src="<?php echo$this->images?>icon1.png" alt="">
-        <div class="title">WATCHING</div>Here you can watch a wide range of uncensored videos all provided by our userbase!
+        <div class="title">READING</div>Here you can view a wide range of uncensored REPORTS all provided by our Customers!
       </div>
     </div>
     <div class="grid_4">
       <div class="icon">
         <img src="<?php echo$this->images?>icon2.png" alt="">
-        <div class="title">SWAGGING</div><span class="col1"><a href="https://ifunny.co" rel="dofollow"> Find </a></span>
+        <div class="title">Helping</div><span class="col1"><a href="https://ifunny.co" rel="dofollow"> Find </a></span>
           more dank memes than you could ever imagine.
       </div>
     </div>
     <div class="grid_4">
       <div class="icon">
         <img src="<?php echo$this->images?>icon3.png" alt="">
-        <div class="title">UPLOADING</div>You can upload your own videos here with no liability whatsoever!!!
+        <div class="title">SUBMITTING</div>You can submit your own Reports here with no liability whatsoever!!!
       </div>
     </div>
-    <div class="grid_12">
+    <!--<div class="grid_12">
       <h3><span>Trending</span></h3>
     </div>
-    <div class="clear"></div>
+    <div class="clear"></div>-->
     <div class="works">
         <?php
         if(isset($this->products[0]['ID'])){

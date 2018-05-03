@@ -57,9 +57,9 @@
                 </div>
             </fieldset>
             <?php echo $this->formHelper->endForm(); ?>
-            <?php }else{?>
-                <h3><span>Profile</span></h3>
-                <?php $user = $this->user[0]; $videos=$this->videos; $amount=0;?>
+            <?php }else{ $user = $this->sessionManager->getSessionArray('User');?>
+                <h3><span><?php echo$user['firstname']." ".$user['lastname']?>'s Profile</span></h3>
+                <?php $videos=$this->videos; $amount=0;?>
                 <?php echo $this->formHelper->createForm("user","/user/edit/".$user['id'],"POST","Edit"); ?>
                 <fieldset>
                     <div class="success_wrapper">
@@ -69,11 +69,11 @@
                     </div>
                     <fieldset>
                         <label class="username">
-                            <input type="text" name="username" placeholder="Username" value="<?php echo$user['username']?>" required maxlength="16">
+                            <input type="text" name="username" placeholder="Username" value="<?php echo$user['Username']?>" required maxlength="16">
                             <br class="clear">
                             <span class="error error-empty">*This is not a valid name.</span><span class="empty error-empty">*This field is required.</span> </label>
                         <label class="email">
-                            <input type="email" name="email" placeholder="E-mail" value="<?php echo$user['email']?>" required>
+                            <input type="email" name="email" placeholder="E-mail" value="<?php echo$user['Email']?>" required>
                             <br class="clear">
                             <span class="error error-empty">*This is not a valid email address.</span><span class="empty error-empty">*This field is required.</span> </label>
                         <label class="email">

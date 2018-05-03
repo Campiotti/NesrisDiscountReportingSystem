@@ -113,5 +113,8 @@ class Entity
         $res = $query->executeStatement();
         $this->patchEntity($res[0]);
     }
+    public function getId(){
+        return$this->id;
+    }
 
 }
